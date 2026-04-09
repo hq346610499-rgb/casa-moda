@@ -9,47 +9,56 @@
 body {
   margin:0;
   font-family: 'Helvetica Neue', Arial;
-  background:#f5f3ef;
+  background:#f7f5f2;
   color:#222;
 }
 
-/* 首页大图 */
+/* 顶部 */
 .hero {
-  height:90vh;
-  background-image:url('https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4');
+  height:95vh;
+  background-image:url('https://images.unsplash.com/photo-1616627981431-93c66f8b2e2c');
   background-size:cover;
   background-position:center;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  color:white;
 }
 
 .overlay {
   background:rgba(0,0,0,0.35);
-  padding:40px;
+  padding:50px;
+  text-align:center;
+  color:white;
 }
 
-.hero h1 {
-  font-size:52px;
-  letter-spacing:6px;
+/* LOGO */
+.logo {
+  width:140px;
+  margin-bottom:20px;
 }
 
-.hero p {
-  font-size:18px;
+/* 标题 */
+h1 {
+  font-size:48px;
+  letter-spacing:5px;
+}
+
+.subtitle {
+  font-size:16px;
   margin-top:10px;
 }
 
+/* 按钮 */
 .button {
-  margin-top:20px;
-  padding:12px 30px;
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 28px;
   background:white;
   color:black;
   text-decoration:none;
   font-weight:bold;
   margin-right:10px;
-  border-radius:6px;
+  border-radius:5px;
   transition:0.3s;
 }
 
@@ -60,7 +69,7 @@ body {
 
 /* 内容区 */
 .section {
-  padding:70px 20px;
+  padding:80px 20px;
   text-align:center;
 }
 
@@ -75,19 +84,17 @@ body {
   color:#555;
 }
 
-/* 产品 */
-.products {
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
+/* 分类 */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.card {
-  width:220px;
-  padding:25px;
-  background:white;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+.grid div {
+  background:#eee;
+  padding:50px 20px;
+  font-size:18px;
 }
 
 /* 页脚 */
@@ -104,32 +111,33 @@ body {
 <body>
 
 <div class="hero">
-  <div class="overlay"><img src="10715.jpeg" style="width:140px; margin-bottom:20px;">
-     <h1>CASA MODA</h1>
-    <p>Living with Style</p>
-    <p>Decoración · Regalos · Textiles</p>
+  <div class="overlay">
+    <img src="10715.jpeg" class="logo">
+    <h1>CASA MODA</h1>
+    <div class="subtitle">Estilo de vida · Regalos · Hogar</div>
 
-    <a class="button" href="#">Ver productos</a>
     <a class="button" href="https://wa.me/541127523935">WhatsApp</a>
   </div>
 </div>
 
 <div class="section">
-  <h2>Sobre nosotros</h2>
+  <h2>Sobre Casa Moda</h2>
   <p>
-  En Casa Moda seleccionamos piezas únicas de decoración, regalos y textiles
-  para crear espacios elegantes, cálidos y con identidad.
+  Un espacio donde el diseño, la calidez y los pequeños detalles crean un estilo único.
+  Descubre productos seleccionados para tu hogar, tus regalos y tu día a día.
   </p>
 </div>
 
 <div class="section">
   <h2>Nuestros productos</h2>
 
-  <div class="products">
-    <div class="card">Decoración</div>
-    <div class="card">Regalos</div>
-    <div class="card">Textiles</div>
-    <div class="card">Edición especial</div>
+  <div class="grid">
+    <div>Decoración</div>
+    <div>Regalos</div>
+    <div>Textiles</div>
+    <div>Accesorios</div>
+    <div>Cocina</div>
+    <div>Cosmética</div>
   </div>
 </div>
 
@@ -137,7 +145,6 @@ body {
   <h2>Visítanos</h2>
   <p>Av. Santa Fe 2374, Recoleta</p>
   <p>Buenos Aires</p>
-  <p>WhatsApp: +54 11 2752 3935</p>
 </div>
 
 <div class="footer">
