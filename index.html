@@ -1,155 +1,429 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casa Moda</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Moda</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-body {
-  margin:0;
-  font-family: 'Helvetica Neue', Arial;
-  background:#f7f5f2;
-  color:#222;
-}
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #f8f5f0;
+      color: #222;
+      line-height: 1.6;
+    }
 
-/* 顶部 */
-.hero {
-  height:95vh;
-  background-image:url('https://images.unsplash.com/photo-1616627981431-93c66f8b2e2c');
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.overlay {
-  background:rgba(0,0,0,0.35);
-  padding:50px;
-  text-align:center;
-  color:white;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* LOGO */
-.logo {
-  width:140px;
-  margin-bottom:20px;
-}
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #e8e2d8;
+    }
 
-/* 标题 */
-h1 {
-  font-size:48px;
-  letter-spacing:5px;
-}
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.subtitle {
-  font-size:16px;
-  margin-top:10px;
-}
+    .logo {
+      font-size: 28px;
+      letter-spacing: 3px;
+      font-weight: 300;
+    }
 
-/* 按钮 */
-.button {
-  display:inline-block;
-  margin-top:25px;
-  padding:12px 28px;
-  background:white;
-  color:black;
-  text-decoration:none;
-  font-weight:bold;
-  margin-right:10px;
-  border-radius:5px;
-  transition:0.3s;
-}
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
-.button:hover {
-  background:black;
-  color:white;
-}
+    .hero {
+      min-height: 85vh;
+      background: linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.22)),
+        url('https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-/* 内容区 */
-.section {
-  padding:80px 20px;
-  text-align:center;
-}
+    .hero-content {
+      color: white;
+      max-width: 800px;
+    }
 
-.section h2 {
-  font-size:30px;
-  margin-bottom:20px;
-}
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 300;
+      letter-spacing: 6px;
+      margin-bottom: 18px;
+    }
 
-.section p {
-  max-width:600px;
-  margin:auto;
-  color:#555;
-}
+    .hero h2 {
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      margin-bottom: 18px;
+    }
 
-/* 分类 */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
 
-.grid div {
-  background:#eee;
-  padding:50px 20px;
-  font-size:18px;
-}
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-/* 页脚 */
-.footer {
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:40px;
-}
-</style>
+    .btn {
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+      border: 1px solid white;
+    }
 
+    .btn-primary {
+      background: white;
+      color: #222;
+    }
+
+    .btn-primary:hover {
+      background: #f1ece3;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    section {
+      padding: 80px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      font-weight: 300;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      font-size: 16px;
+    }
+
+    .categories-grid,
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .category-card,
+    .product-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover,
+    .product-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .category-card img,
+    .product-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .category-card h3,
+    .product-info h3 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .category-card .text,
+    .product-info {
+      padding: 22px;
+    }
+
+    .category-card p,
+    .product-info p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    .price {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .about {
+      background: #efe8de;
+      border-radius: 24px;
+      padding: 50px 30px;
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555;
+      font-size: 17px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #fff;
+      border-top: 1px solid #e8e2d8;
+      text-align: center;
+      padding: 28px 20px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 992px) {
+      .categories-grid,
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .hero h2 {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .categories-grid,
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 72vh;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+        letter-spacing: 3px;
+      }
+
+      .hero h2 {
+        font-size: 16px;
+        letter-spacing: 2px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="hero">
-  <div class="overlay">
-    <img src="10715.jpeg" class="logo">
-    <h1>CASA MODA</h1>
-    <div class="subtitle">Estilo de vida · Regalos · Hogar</div>
+  <header>
+    <div class="navbar">
+      <div class="logo">CASA MODA</div>
+      <nav class="nav-links">
+        <a href="#categorias">Categorías</a>
+        <a href="#productos">Productos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-    <a class="button" href="https://wa.me/541127523935">WhatsApp</a>
-  </div>
-</div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>CASA MODA</h1>
+      <h2>Estilo · Hogar · Detalles</h2>
+      <p>Descubre lo bonito en lo cotidiano</p>
+      <div class="hero-buttons">
+        <a href="#productos" class="btn btn-primary">Ver productos</a>
+        <a href="#contacto" class="btn btn-secondary">Contáctanos</a>
+      </div>
+    </div>
+  </section>
 
-<div class="section">
-  <h2>Sobre Casa Moda</h2>
-  <p>
-  Un espacio donde el diseño, la calidez y los pequeños detalles crean un estilo único.
-  Descubre productos seleccionados para tu hogar, tus regalos y tu día a día.
-  </p>
-</div>
+  <section id="categorias">
+    <div class="container">
+      <h2 class="section-title">Nuestras Categorías</h2>
+      <p class="section-subtitle">
+        Una selección especial para acompañar tu día a día con diseño, funcionalidad y encanto.
+      </p>
 
-<div class="section">
-  <h2>Nuestros productos</h2>
+      <div class="categories-grid">
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=800&q=80" alt="Juguetes">
+          <div class="text">
+            <h3>Juguetes</h3>
+            <p>Detalles divertidos y adorables para los más pequeños.</p>
+          </div>
+        </div>
 
-  <div class="grid">
-    <div>Decoración</div>
-    <div>Regalos</div>
-    <div>Textiles</div>
-    <div>Accesorios</div>
-    <div>Cocina</div>
-    <div>Cosmética</div>
-  </div>
-</div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Cocina">
+          <div class="text">
+            <h3>Cocina</h3>
+            <p>Accesorios prácticos y bonitos para tu hogar.</p>
+          </div>
+        </div>
 
-<div class="section">
-  <h2>Visítanos</h2>
-  <p>Av. Santa Fe 2374, Recoleta</p>
-  <p>Buenos Aires</p>
-</div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=800&q=80" alt="Decoración">
+          <div class="text">
+            <h3>Decoración</h3>
+            <p>Pequeños objetos que transforman cualquier espacio.</p>
+          </div>
+        </div>
 
-<div class="footer">
-  Casa Moda © 2026
-</div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80" alt="Belleza">
+          <div class="text">
+            <h3>Belleza</h3>
+            <p>Productos elegantes para tu cuidado personal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="productos">
+    <div class="container">
+      <h2 class="section-title">Productos Destacados</h2>
+      <p class="section-subtitle">
+        Una colección pensada para quienes valoran lo simple, útil y bonito.
+      </p>
+
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=800&q=80" alt="Vela aromática">
+          <div class="product-info">
+            <h3>Vela Aromática</h3>
+            <p>Ideal para crear una atmósfera cálida y delicada.</p>
+            <div class="price">$12.000</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80" alt="Taza elegante">
+          <div class="product-info">
+            <h3>Taza Elegante</h3>
+            <p>Diseño moderno para acompañar tus momentos favoritos.</p>
+            <div class="price">$9.500</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Peluche suave">
+          <div class="product-info">
+            <h3>Peluche Suave</h3>
+            <p>Tierno, acogedor y perfecto para regalar.</p>
+            <div class="price">$15.000</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Accesorio decorativo">
+          <div class="product-info">
+            <h3>Accesorio Decorativo</h3>
+            <p>Un detalle especial para elevar cualquier rincón.</p>
+            <div class="price">$18.000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="container">
+      <div class="about">
+        <h2 class="section-title">Sobre Casa Moda</h2>
+        <p>
+          En Casa Moda creemos que los pequeños detalles hacen la diferencia.
+          Seleccionamos productos de estilo, hogar, belleza y regalos con una estética cálida,
+          moderna y cercana para que cada compra se sienta especial.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container contact">
+      <h2 class="section-title">Contacto</h2>
+      <p>Estamos para ayudarte.</p>
+      <p>Instagram: @casamoda</p>
+      <p>WhatsApp: +54 9 11 0000 0000</p>
+      <p>Email: contacto@casamoda.com</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Casa Moda · Todos los derechos reservados
+  </footer>
 
 </body>
 </html>
